@@ -1,0 +1,142 @@
+" My nvim configuration
+" Based on some notes from jez/vim-as-an-ide
+
+" Unlock the power
+set nocompatible
+
+" *** Vundle Plugin Manager Setup ***
+filetype off
+set rtp+=~/.config/nvim/bundle/Vundle.vim " run time path
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" *Vim Face lift
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-syntastic/syntastic'
+
+" NERDTree Implementation
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+" Unicode Browser
+Plugin 'chrisbra/unicode.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+" --- The Basics ---
+set ruler
+set number
+set showcmd
+set showmode
+set hidden
+set scrolloff=3
+set encoding=utf-8
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+syntax on
+set mouse=a
+let mapleader = ","
+hi clear SignColumn " for syntastic
+set visualbell
+
+" --- Searching ---
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+map <leader><space> :let @/=''<cr> " clear search
+
+" --- Whitespace ---
+set nowrap
+set tw=0
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
+" *** --- Plugin Specific Settings --- ***
+
+" ------- altercation/vim-colors-solarized settings -------
+set background=dark
+"let g:solarized_termcolors=256 " only if terminal lacking solarized
+colorscheme solarized
+" colorscheme slate
+" colorscheme darkblue
+
+" ------- bling/vim-airline settings -------
+" always show status bar
+set laststatus=2
+" for fancy arrows
+" requires patched font (from gihub) - Menlo for Powerline
+let g:airline_powerline_fonts=1
+" show PASTE if in paste mode
+let g:airline_detect_paste=1
+" show airline tabs
+let g:airline#extensions#tabline#enabled=1
+" solarized theme for airline
+let g:airline_theme='solarized'
+
+" ------- jistr/vim-nerdtree-tabs -------
+nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:NERDTreeWinPos = "right"
+" alternative settings to use builtin netrw
+"let g:netrw_liststyle = 3
+"let g:netrw_banner = 0
+"let g:netrw_browse_split = 4
+"let g:netrw_winsize = 20
+"let g:netrw_altv = 1
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore!
+"augroup END
+
+" ------- scrooloose/syntastic settings -------
+let g:syntastic_error_symbol = "☓"
+let g:syntastic_warning_symbol = "▲"
+augroup mySyntastic
+  au!
+  au FileType text let b:syntastic_mode = "passive"
+augroup END
+
+" *** *** END PLUGIN SETTINGS *** ***
+
+
+" --- GUI Options
+" Toggle Toolbars / Scrollbars
+" set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+" set guioptions-=r  "remove right-hand scroll bar
+" set guioptions-=L  "remove left-hand scroll bar
+" Set Font for GVim
+set guifont="Lucida Console 10"
+
+
+" --- Key Mapping Modifications
+" map command to Visualize tabs and newlines
+set listchars=tab:?\ ,eol:Ỳ
+nmap <leader>l :set list!<CR> " Toggle tabs and EOL
+" nmap command to close a current buffer but keep the split
+nmap <leader>d :b#<bar>bd#<CR>
+" nmap command to switch the active buffer to bNext but keep the split
+nmap <leader>b :bNext<CR>
+" nmap command to switch the active buffer to bPrevious but keep the split
+nmap <leader>v :bprevious<CR>
+" nmap command to automatically open the config file for nvim
+nmap <leader>e :e ~/.config/nvim/init.vim<CR>
+" Move up/down editor lines
+nnoremap gj <C-d> 
+nnoremap gk <C-u>
+
