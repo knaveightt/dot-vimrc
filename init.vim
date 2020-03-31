@@ -18,12 +18,17 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
 
-" NERDTree Implementation
+" *NERDTree Implementation
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 
-" Unicode Browser
+" *Unicode Browser
 Plugin 'chrisbra/unicode.vim'
+
+" *Tags Implementation
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 filetype plugin indent on
@@ -111,6 +116,25 @@ augroup mySyntastic
   au FileType text let b:syntastic_mode = "passive"
 augroup END
 
+" ------- xolox/vim-easytags settings -------
+" Where to look for tags
+set tags=./tags;,~/.vimtags
+" Sensible defaults
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytage_supress_ctags_warning = 1
+
+" ------- majutsuhi/tagbar settings -------
+"  set tagbar on the left and size it
+let g:tagbar_left = 1
+let g:tagbar_width = 30
+" Open/close tagbar with <leader>c
+nmap <silent> <leader>c :TagbarToggle<CR>
+" Uncomment to open tagbar automatically whenever possible
+"autocmd BufEnter * nested :call tagbar#autoopen(0)
+
 " *** *** END PLUGIN SETTINGS *** ***
 
 
@@ -125,6 +149,7 @@ set guifont="Lucida Console 10"
 
 
 " --- Key Mapping Modifications
+"  (keys mapped in above config: <leader>t)
 " map command to Visualize tabs and newlines
 set listchars=tab:?\ ,eol:Ỳ
 nmap <leader>l :set list!<CR> " Toggle tabs and EOL
