@@ -154,7 +154,7 @@ set guifont="Lucida Console 10"
 " --- Key Mapping Modifications
 "  (keys mapped in above config: <leader>t and <leader>c)
 " map command to Visualize tabs and newlines
-set listchars=tab:?\ ,eol:Ỳ
+set listchars=tab:⇨ ,eol:□
 nmap <leader>l :set list!<CR> " Toggle tabs and EOL
 " nmap command to close a current buffer but keep the split
 nmap <leader>d :b#<bar>bd#<CR>
