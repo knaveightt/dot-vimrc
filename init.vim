@@ -142,9 +142,10 @@ nmap <silent> <leader>c :TagbarToggle<CR>
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 " ------- airblade/vim-gitgutter settings -------
-"  Note - use ssh keys and install ssh-askpass when pushing git repos
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
+" Mapping to quick git push
+nnoremap <leader>p :Git --paginate push<CR>
 
 " *** *** END PLUGIN SETTINGS *** ***
 
