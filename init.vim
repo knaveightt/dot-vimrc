@@ -38,6 +38,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
+" *Superman Implementation
+Plugin 'jez/vim-superman'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -159,6 +162,9 @@ augroup myDelimitMate
   au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
 
+" ------- jez/vim-superman settings -------
+noremap K :SuperMan <cword><CR>
+
 " *** *** END PLUGIN SETTINGS *** ***
 
 
@@ -174,7 +180,7 @@ set guifont="Lucida Console 10"
 
 " --- Key Mapping Modifications
 " >> keys mapped in above config:
-" >> <leader>t, <leader>c, <leader>p
+" >> <leader>t, <leader>c, <leader>p, 'K'
 " map command to Visualize tabs and newlines
 set listchars=tab:⇒\ ,eol:□
 nmap <leader>l :set list!<CR> " Toggle tabs and EOL
