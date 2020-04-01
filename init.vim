@@ -1,5 +1,6 @@
 " My nvim configuration
-" Based on some notes from jez/vim-as-an-ide
+" Based on notes from jez/vim-as-an-ide
+" Check out his repository for a vim config walkthrough!
 
 " Unlock the power
 set nocompatible
@@ -17,6 +18,8 @@ Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-scripts/a.vim'
 
 " *NERDTree Implementation
 Plugin 'scrooloose/nerdtree'
@@ -149,7 +152,7 @@ set guifont="Lucida Console 10"
 
 
 " --- Key Mapping Modifications
-"  (keys mapped in above config: <leader>t)
+"  (keys mapped in above config: <leader>t and <leader>c)
 " map command to Visualize tabs and newlines
 set listchars=tab:?\ ,eol:Ỳ
 nmap <leader>l :set list!<CR> " Toggle tabs and EOL
