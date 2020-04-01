@@ -38,8 +38,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
-" *Superman Implementation
+" *man pages / tmux
 Plugin 'jez/vim-superman'
+Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 filetype plugin indent on
