@@ -20,6 +20,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
+Plugin 'Raimondi/delimitMate'
 
 " *NERDTree Implementation
 Plugin 'scrooloose/nerdtree'
@@ -147,6 +148,16 @@ nmap <silent> <leader>c :TagbarToggle<CR>
 let g:airline#extensions#hunks#non_zero_only = 1
 " Mapping to quick git push
 nnoremap <leader>p :Git --paginate push<CR>
+
+" ------- Raimondi/delimitMate settings -------
+let delimitMate_expand_cr = 1
+augroup myDelimitMate
+  au!
+  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+  au FileType tex let b:delimitMate_quotes = ""
+  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+augroup END
 
 " *** *** END PLUGIN SETTINGS *** ***
 
