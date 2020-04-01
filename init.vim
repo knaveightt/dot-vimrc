@@ -143,6 +143,7 @@ nmap <silent> <leader>c :TagbarToggle<CR>
 
 " ------- airblade/vim-gitgutter settings -------
 " In vim-airline, only display "hunks" if the diff is non-zero
+" Ensure usage of ssh keys when pushing to remote repositories
 let g:airline#extensions#hunks#non_zero_only = 1
 " Mapping to quick git push
 nnoremap <leader>p :Git --paginate push<CR>
