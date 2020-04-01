@@ -1,2 +1,2 @@
 # dot-vimrc
-Various vim/nvim configs to update throughout their usage.
+My nvim config to update throughout its usage.
