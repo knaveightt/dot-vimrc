@@ -162,7 +162,8 @@ set guifont="Lucida Console 10"
 
 
 " --- Key Mapping Modifications
-"  (keys mapped in above config: <leader>t and <leader>c)
+" >> keys mapped in above config:
+" >> <leader>t, <leader>c, <leader>p
 " map command to Visualize tabs and newlines
 set listchars=tab:⇒\ ,eol:□
 nmap <leader>l :set list!<CR> " Toggle tabs and EOL
