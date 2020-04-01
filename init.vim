@@ -33,6 +33,10 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 
+" *Git Implementation
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -138,6 +142,10 @@ nmap <silent> <leader>c :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
+" ------- airblade/vim-gitgutter settings -------
+" In vim-airline, only display "hunks" if the diff is non-zero
+let g:airline#extensions#hunks#non_zero_only = 1
+
 " *** *** END PLUGIN SETTINGS *** ***
 
 
@@ -154,7 +162,7 @@ set guifont="Lucida Console 10"
 " --- Key Mapping Modifications
 "  (keys mapped in above config: <leader>t and <leader>c)
 " map command to Visualize tabs and newlines
-set listchars=tab:⇨ ,eol:□
+set listchars=tab:⇒\ ,eol:□
 nmap <leader>l :set list!<CR> " Toggle tabs and EOL
 " nmap command to close a current buffer but keep the split
 nmap <leader>d :b#<bar>bd#<CR>
