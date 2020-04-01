@@ -196,4 +196,10 @@ nmap <leader>e :e ~/.config/nvim/init.vim<CR>
 " Move up/down editor lines
 nnoremap gj <C-d> 
 nnoremap gk <C-u>
+" Key Mappings if using :terminal 
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-l> <C-\><C-N><C-w>l
+
 
