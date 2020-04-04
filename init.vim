@@ -21,6 +21,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Raimondi/delimitMate'
+Plugin 'google/vim-searchindex'
 
 " *NERDTree Implementation
 Plugin 'scrooloose/nerdtree'
@@ -63,8 +64,6 @@ hi clear SignColumn " for syntastic
 set visualbell
 
 " --- Searching ---
-nnoremap / /\v
-vnoremap / /\v
 set hlsearch
 set incsearch
 set ignorecase
