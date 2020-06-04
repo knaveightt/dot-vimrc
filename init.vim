@@ -2,6 +2,33 @@
 " Based on notes from jez/vim-as-an-ide
 " Check out his repository for a vim config walkthrough!
 
+" Instructions:
+" 0) Install NeoVim
+" 1) Install Vundle.vim
+"    a) git clone https://github.com/VundleVim/Vundle.vim ~/.config/nvim/bundle/Vundle.vim
+" 2) Decide on colorscheme
+"    a) Goto ltercation/vim-colors-solarized settings and uncomment a colorscheme
+"    b) Goto bling/vim-airline settings and uncomment an airline theme
+" 3) Patch your terminal font for powerline
+"    a) Goto https://github.com/abertsch/Menlo-for-Powerline and download one of the fonts
+"     ) Alternative: https://github.com/powerline/fonts/
+"    b) Move font to ~/.local/share/fonts/ 
+"    c) Run fc-cache
+"    d) Change terminal font to patched font
+"    c) Goto bling/vim-airline settings and ensure powerline fonts is '1'
+" 4) Compatibility with Tmux
+"    a) Install Tmux on your system
+"    b) Add the following to ~/.tmux.conf
+"is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+"bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+"bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+"bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+"bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+"bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+"# restore overwritten C-l binding (clear screen)
+"bind-key -n C-l send-keys 'C-l'
+" 5) Copy or clone this file as your ~/.config/nvim/init.vim
+
 " Unlock the power
 set nocompatible
 
@@ -86,8 +113,8 @@ set noshiftround
 " ------- altercation/vim-colors-solarized settings -------
 set background=dark
 "let g:solarized_termcolors=256 " only if terminal lacking solarized
-colorscheme solarized
-" colorscheme slate
+" colorscheme solarized
+colorscheme slate
 " colorscheme darkblue
 
 " ------- bling/vim-airline settings -------
@@ -101,7 +128,9 @@ let g:airline_detect_paste=1
 " show airline tabs
 let g:airline#extensions#tabline#enabled=1
 " solarized theme for airline
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
+" other themes for airline
+let g:airline_theme='ubaryd'
 
 " ------- jistr/vim-nerdtree-tabs -------
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
