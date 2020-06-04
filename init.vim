@@ -27,7 +27,9 @@
 "bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 "# restore overwritten C-l binding (clear screen)
 "bind-key -n C-l send-keys 'C-l'
-" 5) Copy or clone this file as your ~/.config/nvim/init.vim
+" 5) Install Exuberant tags on your system  
+" 6) Copy or clone this file as your ~/.config/nvim/init.vim
+" 7) Run :PluginInstall
 
 " Unlock the power
 set nocompatible
@@ -163,7 +165,7 @@ let g:easytags_events = ['BufReadPost', 'BufWritePost']
 let g:easytags_async = 1
 let g:easytags_dynamic_files = 2
 let g:easytags_resolve_links = 1
-let g:easytage_supress_ctags_warning = 1
+let g:easytags_suppress_ctags_warning = 1
 
 " ------- majutsuhi/tagbar settings -------
 "  set tagbar on the left and size it
