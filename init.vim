@@ -134,8 +134,8 @@ let g:airline_theme='ubaryd'
 
 " ------- jistr/vim-nerdtree-tabs -------
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:NERDTreeWinPos = "right"
+let g:nerdtree_tabs_open_on_console_startup=0
+let g:NERDTreeWinPos = "left"
 " alternative settings to use builtin netrw
 "let g:netrw_liststyle = 3
 "let g:netrw_banner = 0
@@ -163,11 +163,11 @@ let g:easytags_events = ['BufReadPost', 'BufWritePost']
 let g:easytags_async = 1
 let g:easytags_dynamic_files = 2
 let g:easytags_resolve_links = 1
-let g:easytage_supress_ctags_warning = 1
+let g:easytags_suppress_ctags_warning = 1
 
 " ------- majutsuhi/tagbar settings -------
 "  set tagbar on the left and size it
-let g:tagbar_left = 1
+" let g:tagbar_left = 1
 let g:tagbar_width = 30
 " Open/close tagbar with <leader>c
 nmap <silent> <leader>c :TagbarToggle<CR>
