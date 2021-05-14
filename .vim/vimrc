@@ -18,6 +18,7 @@
 "    Check if this influences bling/vim-airline theme settings
 " 3) Patch your terminal font for powerline
 "    Easy Path: https://github.com/powerline/fonts/
+"    Hard Path: https://github.com/ryanoasis/nerd-fonts (for nerd font icons)
 "    Download and move font to ~/.local/share/fonts
 "    Run fc-cache
 "    Change terminal font to patched font
@@ -76,6 +77,9 @@ Plugin 'jez/vim-c0'
 Plugin 'jez/vim-ispc'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vim-syntastic/syntastic' " syntax error checking
+
+" Final Nerd Font Plugin Support
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 filetype plugin indent on
