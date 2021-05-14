@@ -1,2 +1,2 @@
-# dot-vimrc
-My nvim config to update throughout its usage.
+# knaVIMRC
+My vim config to update throughout its usage.

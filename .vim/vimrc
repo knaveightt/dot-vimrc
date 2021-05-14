@@ -1,0 +1,188 @@
+" .##....##.##....##....###....##.....##.####.##.....##.########...######.
+" .##...##..###...##...##.##...##.....##..##..###...###.##.....##.##....##
+" .##..##...####..##..##...##..##.....##..##..####.####.##.....##.##......
+" .#####....##.##.##.##.....##.##.....##..##..##.###.##.########..##......
+" .##..##...##..####.#########..##...##...##..##.....##.##...##...##......
+" .##...##..##...###.##.....##...##.##....##..##.....##.##....##..##....##
+" .##....##.##....##.##.....##....###....####.##.....##.##.....##..######.
+"
+" knaVIMRC - my .vimrc config
+" Based on https://github.com/jez/vim-as-an-ide
+"
+" Installation Procedure
+" 0) Install [neo]vim
+" 1) Install Vundle.vim via 
+"    git clone https://github.com/VundleVim/Vundle.vim
+"    ~/.config/nvim/bundle/Vundle.vim
+" 2) Decide on colorscheme if needed (I opt to colorize my terminal)
+"    Check if this influences bling/vim-airline theme settings
+" 3) Patch your terminal font for powerline
+"    Easy Path: https://github.com/powerline/fonts/
+"    Download and move font to ~/.local/share/fonts
+"    Run fc-cache
+"    Change terminal font to patched font
+"    Ensure bling/vim-airline settings has powerline fonts enabled
+" 4) Optional: Compatibility with Tmux
+"    Ensure Tmux is installed
+"    Follow christoomey/vim-tmux-navigator settings for ~/.tmux.conf
+" 5) Optional: Install exuberant tags (ctags) on system
+" 6) Move or link this file to .vim/vimrc
+" 7) Run :PluginInstall
+" Good to go!
+" ------------------------------------------------------------------------
+
+" Start Customizations
+set nocompatible
+
+" --<<<<<<<Vundle/Plugins<<<<<<<<<<
+" Setup Vundle bundle system
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Vundle System
+Plugin 'VundleVim/Vundle.vim'
+
+" Interface Visual Adjustments
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Management Utilities
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy find files with Ctrl+p
+Plugin 'Raimondi/delimitMate' " match delimiters
+Plugin 'jez/vim-superman' " view man page via 'K' on a word
+                          " also run vman <command> to launch man in vim
+			  " (see settings later in file)
+Plugin 'christoomey/vim-tmux-navigator' " navigate splits and tmux
+
+" Git Control
+Plugin 'airblade/vim-gitgutter' " gutter symbols
+Plugin 'tpope/vim-fugitive' " git commands
+                          " git add                  --> :Gwrite
+                          " git commit               --> :Gcommit
+                          " git push                 --> :Gpush
+                          " git checkout <file name> --> :Gread
+
+" Programming Interface
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'xolox/vim-misc' " library for easytags
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/a.vim' " .h/.c (or alternative) file toggle with :AT
+
+" Syntax Plugins
+Plugin 'jez/vim-c0'
+Plugin 'jez/vim-ispc'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-syntastic/syntastic' " syntax error checking
+
+call vundle#end()
+filetype plugin indent on
+" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>--
+
+
+" ====== General Settings ====== "
+" Compatibility when using fish shell
+set shell=/bin/bash
+
+" Basic Customization Switches
+set backspace=indent,eol,start " allows backspace under many circumstances
+set ruler
+set number
+set showcmd
+set incsearch
+set hlsearch
+syntax on
+" set mouse=a " placeholder incase mouse support is needed
+hi clear SignColumn " show symbols in gutter
+
+
+" ====== Plugin-Specific Settings ====== "
+" ~~~~~~ bling/vim-airline ~~~~~~
+set laststatus=2 " always show statusbar
+let g:airline_powerline_fonts=1 " enable patched powerline font
+let g:airline_detect_paste=1 " for PASTE mode
+let g:airline#extensions#tabline#enabled=1 " airline for tabs
+let g:airline_theme='laederon' " see https://github.com/vim-airline/vim-airline/wiki/Screenshots 
+
+" ~~~~~~ jistr/vim-nerdtree-tabs ~~~~~~
+" (key mappings defined at end of file)
+
+" ~~~~~~ vim-syntastic/syntastic ~~~~~~
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+augroup mySyntastic
+	au!
+	au FileType tex let b:syntastic_mode = "passive"
+augroup END
+
+" ~~~~~~ xolox/vim-easytags settings ~~~~~~
+set tags=./tags;,~/.vimtags " directories
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+
+" ~~~~~~ majutsushi/tagbar settings ~~~~~~
+"autocmd BufEnter * nested :call tagbar#autoopen(0) " placeholder for auto open
+" (key mappings defined at end of file)
+
+" ~~~~~~ airblade/vim-gitgutter settings ~~~~~~
+let g:airline#extensions#hunks#non_zero_only=1 " only show hunks w/ diffs
+
+" ~~~~~~ raimondi/delimitMate settings ~~~~~~
+let delimitMate_expand_cr = 1
+augroup mydelimitmate
+	au!
+	au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+	au FileType tex let b:delimitMate_quotes = ""
+	au FileType tex let b:delimitMate_matchpairs = "(:),[:],{;},`:'"
+	au FileType python let b:delimitMate_nesting_quotes = ['"',"'"]
+augroup END
+
+" ~~~~~~ jez/vim-superman settings ~~~~~~
+" Add the following to .bashrc to allow vman command
+" vman() {
+"   vim -c "SuperMan $*"
+"
+"   if [ "$?" != "0" ]; then
+"     echo "No manual entry for $*"
+"   fi
+" }
+" (key mappings defined at end of file)
+
+" ~~~~~~ christoomey/vim-tmux-navigator
+"let g:tmux_navigator_no_mappings = 1 " custom keybinds below
+"nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+"nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+"nnoremap <silent> <M-n> :TmuxNavigatePrevious<cr>
+
+
+" ====== Key Mapping Modifications ====== "
+" (jistr/vim-nerdtree-tabs)
+nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+" (majutsushi/tagbar)
+nmap <silent> <leader>b :TagbarToggle<CR>
+" (jez/vim-superman)
+noremap K :SuperMan <cword><CR>
+" close current buffer but keep split
+nmap <leader>d :b#<bar>bd#<CR>
+" switch to next buffer but keep split
+nmap <leader>b :bNext<CR>
+" switch to prev buffer but keey split
+nmap <leader>v :bprevious<CR>
+" automatically open vimrc config file
+nmap <leader>e :e ~/.vim/vimrc<CR>
+" move up/down chunks of editor lines
+nnoremap gj <C-d>
+nnoremap gk <C-u>
+" key mappings if using :terminal
+"tnoremap <C-k> <C-\><C-N><C-w>k
+"tnoremap <C-j> <C-\><C-N><C-w>j
+"tnoremap <C-h> <C-\><C-N><C-w>h
+"tnoremap <C-l> <C-\><C-N><C-w>l
+
