@@ -87,6 +87,7 @@ filetype plugin indent on
 
 
 " ====== General Settings ====== "
+set encoding=utf-8  
 " Compatibility when using fish shell
 set shell=/bin/bash
 
@@ -172,7 +173,7 @@ nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " (majutsushi/tagbar)
 nmap <silent> <leader>b :TagbarToggle<CR>
 " (jez/vim-superman)
-noremap K :SuperMan <cword><CR>
+noremap <silent> <leader>K :SuperMan <cword><CR>
 " close current buffer but keep split
 nmap <leader>d :b#<bar>bd#<CR>
 " switch to next buffer but keep split
@@ -181,9 +182,13 @@ nmap <leader>b :bNext<CR>
 nmap <leader>v :bprevious<CR>
 " automatically open vimrc config file
 nmap <leader>e :e ~/.vim/vimrc<CR>
-" move up/down chunks of editor lines
+" move up/down chunks of editor lines vs visual lines
 nnoremap gj <C-d>
 nnoremap gk <C-u>
+nnoremap J gj
+nnoremap K gk
+" Change J because of the above
+noremap <silent> <leader>J J
 " key mappings if using :terminal
 "tnoremap <C-k> <C-\><C-N><C-w>k
 "tnoremap <C-j> <C-\><C-N><C-w>j
