@@ -13,7 +13,7 @@
 " 0) Install [neo]vim
 " 1) Install Vundle.vim via 
 "    git clone https://github.com/VundleVim/Vundle.vim
-"    ~/.config/nvim/bundle/Vundle.vim
+"    ~/.vim/bundle/Vundle.vim
 " 2) Decide on colorscheme if needed (I opt to colorize my terminal)
 "    Check if this influences bling/vim-airline theme settings
 " 3) Patch your terminal font for powerline
@@ -77,6 +77,9 @@ Plugin 'jez/vim-c0'
 Plugin 'jez/vim-ispc'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vim-syntastic/syntastic' " syntax error checking
+
+" Notetaking and Productivity
+Plugin 'vimwiki/vimwiki'
 
 " Final Nerd Font Plugin Support
 Plugin 'ryanoasis/vim-devicons'
@@ -166,6 +169,9 @@ augroup END
 "nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 "nnoremap <silent> <M-n> :TmuxNavigatePrevious<cr>
 
+" ~~~~~~ vimwiki/vimwiki ~~~~~~
+let g:vimwiki_list = [{'path': '~/Documents/wiki'}]
+
 
 " ====== Key Mapping Modifications ====== "
 " (jistr/vim-nerdtree-tabs)
@@ -177,9 +183,9 @@ noremap <silent> <leader>K :SuperMan <cword><CR>
 " close current buffer but keep split
 nmap <leader>d :b#<bar>bd#<CR>
 " switch to next buffer but keep split
-nmap <leader>b :bNext<CR>
+nmap g. :bn<CR>
 " switch to prev buffer but keey split
-nmap <leader>v :bprevious<CR>
+nmap g, :bp<CR>
 " automatically open vimrc config file
 nmap <leader>e :e ~/.vim/vimrc<CR>
 " move up/down chunks of editor lines vs visual lines
