@@ -91,8 +91,7 @@ filetype plugin indent on
 
 " ====== General Settings ====== "
 set encoding=utf-8  
-" Compatibility when using fish shell
-set shell=/bin/bash
+colorscheme desert
 
 " Basic Customization Switches
 set backspace=indent,eol,start " allows backspace under many circumstances
