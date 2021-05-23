@@ -55,6 +55,7 @@ Plugin 'jez/vim-superman' " view man page via 'K' on a word
                           " also run vman <command> to launch man in vim
 			  " (see settings later in file)
 Plugin 'christoomey/vim-tmux-navigator' " navigate splits and tmux
+Plugin 'chrisbra/unicode.vim' " browse unicode symbols
 
 " Git Control
 Plugin 'airblade/vim-gitgutter' " gutter symbols
