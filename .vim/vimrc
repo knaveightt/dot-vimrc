@@ -57,7 +57,7 @@ Plugin 'chrisbra/unicode.vim' " browse unicode symbols
 Plugin 'airblade/vim-gitgutter' " gutter symbols
 Plugin 'tpope/vim-fugitive' " git commands
                           " git add                  --> :Gwrite
-                          " git commit               --> :Gcommit
+                          " git commit               --> :Git commit
                           " git push                 --> :Gpush
                           " git checkout <file name> --> :Gread
 
