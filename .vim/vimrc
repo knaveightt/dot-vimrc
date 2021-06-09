@@ -23,12 +23,9 @@
 "    Run fc-cache
 "    Change terminal font to patched font
 "    Ensure bling/vim-airline settings has powerline fonts enabled
-" 4) Optional: Compatibility with Tmux
-"    Ensure Tmux is installed
-"    Follow christoomey/vim-tmux-navigator settings for ~/.tmux.conf
-" 5) Optional: Install exuberant tags (ctags) on system
-" 6) Move or link this file to .vim/vimrc
-" 7) Run :PluginInstall
+" 4) Optional: Install exuberant tags (ctags) on system
+" 5) Move or link this file to .vim/vimrc
+" 6) Run :PluginInstall
 " Good to go!
 " ------------------------------------------------------------------------
 
@@ -54,7 +51,6 @@ Plugin 'Raimondi/delimitMate' " match delimiters
 Plugin 'jez/vim-superman' " view man page via 'K' on a word
                           " also run vman <command> to launch man in vim
 			  " (see settings later in file)
-Plugin 'christoomey/vim-tmux-navigator' " navigate splits and tmux
 Plugin 'chrisbra/unicode.vim' " browse unicode symbols
 
 " Git Control
@@ -92,7 +88,7 @@ filetype plugin indent on
 
 " ====== General Settings ====== "
 set encoding=utf-8  
-colorscheme desert
+" colorscheme desert
 
 " Basic Customization Switches
 set backspace=indent,eol,start " allows backspace under many circumstances
@@ -161,19 +157,12 @@ augroup END
 " }
 " (key mappings defined at end of file)
 
-" ~~~~~~ christoomey/vim-tmux-navigator
-"let g:tmux_navigator_no_mappings = 1 " custom keybinds below
-"nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
-"nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
-"nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
-"nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
-"nnoremap <silent> <M-n> :TmuxNavigatePrevious<cr>
-
 " ~~~~~~ vimwiki/vimwiki ~~~~~~
 let g:vimwiki_list = [{'path': '~/Documents/wiki'}]
 
 
 " ====== Key Mapping Modifications ====== "
+let mapleader = ","
 " (jistr/vim-nerdtree-tabs)
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " (majutsushi/tagbar)
@@ -195,9 +184,4 @@ nnoremap J gj
 nnoremap K gk
 " Change J because of the above
 noremap <silent> <leader>J J
-" key mappings if using :terminal
-"tnoremap <C-k> <C-\><C-N><C-w>k
-"tnoremap <C-j> <C-\><C-N><C-w>j
-"tnoremap <C-h> <C-\><C-N><C-w>h
-"tnoremap <C-l> <C-\><C-N><C-w>l
 
