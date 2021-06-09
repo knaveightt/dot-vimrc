@@ -184,4 +184,10 @@ nnoremap J gj
 nnoremap K gk
 " Change J because of the above
 noremap <silent> <leader>J J
-
+" Window/Split navigation (Reminder: C-w and -,+,<,> to resize, q to close)
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-w>j :sp<CR>
+noremap <C-w>l :vsp<CR>
